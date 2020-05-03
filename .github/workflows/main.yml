@@ -12,13 +12,9 @@ on:
     branches:
       - lean
     paths:
-      - '.github/workflows/main.yml'
       - 'patches/**'
-      - 'config_rk3328'
       - 'nanopi-r2_linux_defconfig'
       - 'CHANGELOG.md'
-  schedule:
-    - cron: '00 18 * * *'
 
 jobs:
 
@@ -116,10 +112,10 @@ jobs:
           #cat config_usb-net >> rk3328/configs/config_rk3328
 
       # 如果不喜欢互换, 直接注释即可
-      - name: Swap wan and lan
-        run: |
-          cd rk3328/friendlywrt
-          git apply ../../patches/003-openwrt-swap-wan-and-lan.patch
+#       - name: Swap wan and lan
+#         run: |
+#           cd rk3328/friendlywrt
+#           git apply ../../patches/003-openwrt-swap-wan-and-lan.patch
 
       # 编译时不要去除 set -e, 编译都报错了, 你还让它继续, 最后的固件能没有 bug?
       - name: Build FriendlyWrt
